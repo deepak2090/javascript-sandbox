@@ -43,3 +43,5 @@ const list = document.querySelector('ul');
 console.log(list);
 const firstItem = list.querySelector('li');
 firstItem.style.color = 'blue';
+
+document.getElementById()

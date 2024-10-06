@@ -1,35 +1,38 @@
-// const intervalID = setInterval(myCallback, 1000, 'Hello');
+//setinterval needs a function to call and interval period, if any extra arguments 
+//it needs to be appeneded at the end
+//const interval = setInterval(mycallback, 1000, 'hello','deepak');
 
-// function myCallback(a) {
-//   console.log(a, Date.now());
-// }
+//function mycallback(a,b){
+//  console.log(a, b, Date.now());
+//}
 
-let intervalID;
-
-function startChange() {
-  if (!intervalID) {
-    intervalID = setInterval(changeRandomColor, 1000);
+let intervalid;
+function startchange(){
+  if (!intervalid){
+    intervalid = setInterval(randomcolorchange, 1000);
   }
 }
 
-// function changeColor() {
-//   if (document.body.style.backgroundColor !== 'black') {
-//     document.body.style.backgroundColor = 'black';
-//     document.body.style.color = 'white';
-//   } else {
-//     document.body.style.backgroundColor = 'white';
-//     document.body.style.color = 'black';
-//   }
-// }
+/*function changecolor(){
+    if (document.body.style.backgroundColor != 'black'){
+      document.body.style.backgroundColor = 'black';
+      document.body.style.color = 'white';
+    }
+    else{
+      document.body.style.backgroundColor = 'white';
+      document.body.style.color = 'black';
+    }
+  }*/
 
-function changeRandomColor() {
-  const randomColor = Math.floor(Math.random() * 16777215).toString(16);
-  document.body.style.backgroundColor = `#${randomColor}`;
+function randomcolorchange(){
+  let colorcode = Math.floor(Math.random() * 16777215).toString(16);
+  console.log(colorcode);
+  document.body.style.backgroundColor = colorcode;
+
 }
 
-function stopChange() {
-  clearInterval(intervalID);
+function stopchange(){
+  clearInterval(intervalid);
 }
-
-document.getElementById('start').addEventListener('click', startChange);
-document.getElementById('stop').addEventListener('click', stopChange);
+document.getElementById('start').addEventListener('click', startchange);
+document.getElementById('stop').addEventListener('click', stopchange);

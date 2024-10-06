@@ -8,6 +8,6 @@ div.setAttribute('title', 'My Element');
 const text = document.createTextNode('Hello World');
 div.appendChild(text);
 
-// document.body.appendChild(div);
-
+document.body.appendChild(div);
+console.log(div);
 document.querySelector('ul').appendChild(div);

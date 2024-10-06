@@ -1,24 +1,39 @@
 const jokeEl = document.getElementById('joke');
 const jokeBtn = document.getElementById('joke-btn');
-
-const generateJoke = () => {
+let jokeval = "";
+const generateJoke = (abc) => {
   const xhr = new XMLHttpRequest();
-
-  xhr.open('GET', 'https://api.chucknorris.io/jokes/random');
-
+  try{
+    xhr.open('GET', 'https://api.chucknorris.io/jokes/random');
+  }
+  catch{
+    cconsole.log("error connecting to API");
+    jokeval = "no jokes retrieved";
+  }
+  
+  
   xhr.onreadystatechange = function () {
     if (this.readyState === 4) {
-      if (this.status === 200) {
-        // console.log(JSON.parse(this.responseText).value);
-        jokeEl.innerHTML = JSON.parse(this.responseText).value;
-      } else {
-        jokeEl.innerHTML = 'Something Went Wrong (Not Funny)';
+      if (this.status == 200){
+        const data = JSON.parse(this.responseText);
+        console.log(data.value);
+        jokeval = data.value;
+        console.log(jokeval);
+        updatejoke();
+        
+      }
+      else{
+        jokeval = "API didn't connect properly";
+        updatejoke();
       }
     }
   };
 
   xhr.send();
 };
+function updatejoke(){
+  jokeEl.innerHTML = `<strong>${jokeval}</strong>`;
+}
 
-jokeBtn.addEventListener('click', generateJoke);
-document.addEventListener('DOMContentLoaded', generateJoke);
+jokeBtn.addEventListener("click", generateJoke);
+document.addEventListener("DOMContentLoaded", generateJoke);

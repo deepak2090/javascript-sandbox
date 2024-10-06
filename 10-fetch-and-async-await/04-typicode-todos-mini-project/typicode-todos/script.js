@@ -60,6 +60,7 @@ const updateTodo = (id, completed) => {
 
 const deleteTodo = (e) => {
   if (e.target.classList.contains('todo')) {
+
     const id = e.target.dataset.id;
     fetch(`${apiUrl}/${id}`, {
       method: 'DELETE',
@@ -69,13 +70,24 @@ const deleteTodo = (e) => {
   }
 };
 
+const verify = (e) => {
+  console.log(e.target.dataset.id);
+  if(e.target.classList.contains('todo')){
+    const id = e.target.dataset.id;
+    fetch(`${apiUrl}/${id}`, {
+      method: 'DELETE',
+    }).then((res) => res.json()).then(() => e.target.remove());
+  }
+}
+
 const init = () => {
   document.addEventListener('DOMContentLoaded', getTodos);
   document.querySelector('#todo-form').addEventListener('submit', createTodo);
   document
     .querySelector('#todo-list')
     .addEventListener('click', toggleCompleted);
-  document.querySelector('#todo-list').addEventListener('dblclick', deleteTodo);
+  //document.querySelector('#todo-list').addEventListener('dblclick', deleteTodo);
+  document.querySelector('#todo-list').addEventListener('dblclick', verify);
 };
 
 init();

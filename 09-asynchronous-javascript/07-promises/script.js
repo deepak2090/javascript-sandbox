@@ -1,31 +1,39 @@
-// Create a promise
-const promise = new Promise((resolve, reject) => {
-  // Do some async task
-  setTimeout(() => {
+const promise = new Promise((resolve, reject)=>{
+  setTimeout(()=>{
     console.log('Async task complete');
     resolve();
+
   }, 1000);
+
 });
-
-// promise.then(() => {
-//   console.log('Promise consumed..');
-// });
-
-const getUser = new Promise((resolve, reject) => {
-  setTimeout(() => {
+//handle the promise
+promise.then(()=>{
+  console.log('promise consumed');
+  console.log(promise);
+});
+//in promise resolve needs to have the data
+const getuser = new Promise((resolve, reject)=>{
+  setTimeout(()=>{
     let error = true;
-
-    if (!error) {
-      resolve({ name: 'John', age: 30 });
-    } else {
+    if (!error){
+      resolve({name:'deepak', age: '35'});
+    }
+    else{
       reject('Error: Something went wrong');
     }
+    
+    
+
   }, 1000);
+
+});
+getuser.
+  then((resolvedata)=>{
+    console.log(resolvedata);
+   })
+   .catch((error)=>{ console.log(error);
+}).finally(()=>{
+  console.log("the promised either resolved/reject has been complete");
 });
 
-getUser
-  .then((user) => console.log(user))
-  .catch((error) => console.log(error))
-  .finally(() => console.log('The promise has been resolved or rejected'));
-
-console.log('Hello from global scope');
+console.log('hello from global scope');
