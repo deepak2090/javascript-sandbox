@@ -1,12 +1,11 @@
 // Ways to declare a variable
 // `var`, `let`, & `const`
 
-let firstName = 'John';
+let firstName = 'Deepak';
 const lastName = 'Doe';
 let age = 30;
 
 console.log(age);
-
 // Naming Conventions
 // - Only letters, numbers, underscores and dollar signs
 // - Can't start with a number
@@ -58,3 +57,13 @@ const d = 10,
 
 console.log(d);
 console.log(a);
+let xyz = 90;
+console.log(xyz);
+
+const obj1 = {
+  name: 'Meenakshi',
+  email: 'deepaktest@mail.com'
+}
+
+obj1.name = 'test';
+console.log(obj1);
