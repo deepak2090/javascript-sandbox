@@ -9,10 +9,6 @@ const person = {
 };
 
 let newName = name;
-newName = 'Jonathan';
+//newName = 'Jonathan';
+console.log(newName);
 
-let newPerson = person;
-newPerson.name = 'Bradley';
-
-console.log(name, newName); // John, Jonathan
-console.log(person, newPerson); // { name: 'Bradley', age: 40 }, { name: 'Bradley', age: 40 }
